@@ -1,0 +1,31 @@
+# Types
+type BasicChargeSetting {
+  id: ID!
+  sortIndex: Int
+  updatedAt: Time
+  patient: Patient
+  organizationBasicChargeSetting: OrganizationBasicChargeSetting!
+}
+
+type AllChargeSetting {
+  updatedAt: Time
+  patient: Patient
+  detail1: String
+}
+
+# input
+input BasicChargeInput {
+  organizationBasicChargeId: [ID!]!
+  patientId: String!
+}
+
+# Define query here
+extend type Query {
+  basicChargeSettings(patientId: ID!): [BasicChargeSetting!]!
+}
+
+# Define mutation here
+extend type Mutation {
+  createBasicCharge(input: BasicChargeInput): Boolean!
+  updateBasicCharge(input: BasicChargeInput): Boolean!
+}

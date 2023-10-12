@@ -1,0 +1,38 @@
+enum EraType {
+  "西元年"
+  Christian
+  "民國年"
+  Republican
+}
+
+# Types
+type UserPreference {
+  branch: String
+  locale: String
+  era: EraType
+}
+
+type User {
+  id: ID!
+  username: String
+  firstName: String
+  lastName: String
+  displayName: String
+  idNumber: String
+  preference: UserPreference
+  # providerToken: JsonType
+  providerId: String!
+}
+
+# Define mutations here
+extend type Mutation {
+  # login(input: UserInput): String!
+  logout: Boolean!
+}
+
+# Define query here
+extend type Query {
+  me: User!
+  user(id: ID!): User!
+  users: [User!]!
+}

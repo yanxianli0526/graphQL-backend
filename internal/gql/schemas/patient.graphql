@@ -1,0 +1,55 @@
+scalar Time
+scalar PgStringArray
+scalar TransferRefundItemsJsonType
+# Types
+
+type Patient {
+  id: ID!
+  firstName: String
+  lastName: String
+  idNumber: String!
+  photoUrl: String
+  photoXPosition: Int
+  photoYPosition: Int
+  providerId: String!
+  status: String!
+  branch: String
+  room: String
+  bed: String
+  users: [User]
+}
+
+type Detail {
+  date: Time
+  text1: String
+  text2: String
+  text3: String
+}
+
+type PatientSort {
+  id: ID!
+  firstName: String
+  lastName: String
+  updatedAt: Time
+  idNumber: String!
+  photoUrl: String
+  photoXPosition: Int
+  photoYPosition: Int
+  providerId: String!
+  status: String!
+  branch: String
+  room: String
+  bed: String
+  detail1: Detail
+  detail2: Detail
+  users: [User]
+}
+
+
+# Define queries here
+type Query {
+  patient(id: ID!): Patient!
+  patients: [Patient!]!
+}
+
+directive @isAuthenticated on FIELD_DEFINITION

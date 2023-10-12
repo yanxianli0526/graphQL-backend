@@ -1,0 +1,65 @@
+# Types
+type OrganizationReceiptTemplateSetting {
+  id: ID!
+  name: String!
+  taxTypes: PgStringArray!
+  organizationPicture: String
+  titleName: String!
+  patientInfo: PgStringArray!
+  priceShowType: String!
+  organizationInfoOne: PgStringArray!  
+  organizationInfoTwo: PgStringArray! 
+  noteText: String
+  sealOneName: String
+  sealOnePicture: String
+  sealTwoName: String
+  sealTwoPicture: String
+  sealThreeName: String
+  sealThreePicture: String
+  sealFourName: String
+  sealFourPicture: String
+  partOneName: String!
+  partTwoName: String!
+}
+
+input OrganizationReceiptTemplateSettingInput {
+  name: String!
+  taxTypes: [String!]!
+  organizationPicture: String
+  titleName: String!
+  patientInfo:[String!]!
+  organizationInfoOne:[String!]!
+  priceShowType: String!  
+  organizationInfoTwo:[String!]!  
+  noteText: String!
+  sealOneName: String!
+  sealOnePicture: String
+  sealTwoName: String!
+  sealTwoPicture: String
+  sealThreeName: String!
+  sealThreePicture: String
+  sealFourName: String!
+  sealFourPicture: String
+  partOneName: String!
+  partTwoName: String!
+}
+
+# Define query here
+extend type Query {
+  organizationReceiptTemplateSetting(
+    id: ID!
+  ): OrganizationReceiptTemplateSetting
+  organizationReceiptTemplateSettings: [OrganizationReceiptTemplateSetting!]!
+}
+
+# Define mutation here
+extend type Mutation {
+  createOrganizationReceiptTemplateSetting(
+    input: OrganizationReceiptTemplateSettingInput!
+  ): Boolean!
+  updateOrganizationReceiptTemplateSetting(
+    id: ID!
+    input: OrganizationReceiptTemplateSettingInput!
+  ): Boolean!
+  deleteOrganizationReceiptTemplateSetting(id: ID!): Boolean!
+}

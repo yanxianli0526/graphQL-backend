@@ -1,0 +1,36 @@
+# Types
+type OrganizationBasicChargeSetting {
+  id: ID!
+  itemName: String!
+  type: String!
+  unit: String!
+  price: Int!
+  taxType: String!
+}
+
+# input
+input OrganizationBasicChargeSettingInput {
+  itemName: String!
+  type: String!
+  unit: String!
+  price: Int!
+  taxType: String!
+}
+
+# Define query here
+extend type Query {
+  organizationBasicChargeSetting(id: ID!): OrganizationBasicChargeSetting!
+  organizationBasicChargeSettings: [OrganizationBasicChargeSetting!]!
+}
+
+# Define mutation here
+extend type Mutation {
+  createOrganizationBasicChargeSetting(
+    input: OrganizationBasicChargeSettingInput
+  ): Boolean!
+  updateOrganizationBasicChargeSetting(
+    id: ID!
+    input: OrganizationBasicChargeSettingInput
+  ): Boolean!
+  deleteOrganizationBasicChargeSetting(id: ID!): Boolean!
+}

@@ -1,0 +1,48 @@
+# Types
+type DepositRecord {
+  id: ID!
+  idNumber: String
+  updatedAt: Time
+  date: Time
+  type: String
+  price: Int
+  drawee: String
+  note: String
+  invalid: Boolean!
+  patient: Patient
+  user: User!
+}
+
+type PatientLatestDepositRecords {
+  latestRecord: [DepositRecord]
+  latestUpdatedRecord: [DepositRecord]
+}
+
+# input
+input DepositRecordInput {
+  date: Time!
+  type: String!
+  price: Int!
+  drawee: String
+  note: String
+  patientId: String!
+}
+
+input DepositRecordUpdateInput {
+  note: String
+}
+
+# Define query here
+extend type Query {
+  depositRecord(id: ID!): DepositRecord!
+  depositRecords(patientId: ID!): [DepositRecord!]!
+  patientLatestDepositRecords: PatientLatestDepositRecords!
+  printDepositRecord(id: ID!): String
+}
+
+# Define mutation here
+extend type Mutation {
+  createDepositRecord(input: DepositRecordInput!): ID!
+  updateDepositRecord(id: ID!, input: DepositRecordUpdateInput!): Boolean!
+  invalidDepositRecord(id: ID!): Boolean!
+}

@@ -1,0 +1,62 @@
+# Types
+type PatientBill {
+  id: ID!
+  createdAt: Time
+  amountReceived: Int
+  note: String
+  fixedChargeStartDate: Time
+  fixedChargeEndDate: Time
+  transferRefundStartDate: Time
+  transferRefundEndDate: Time
+  nonFixedChargeStartDate: Time
+  nonFixedChargeEndDate: Time
+  billYear: Int
+  billMonth: Int
+  patient: Patient
+  editNoteDate: Time
+  editNoteUser: User
+  user: User!
+  basicCharges: [BasicCharge]
+  subsidies: [Subsidy]
+  nonFixedChargeRecords: [NonFixedChargeRecord]
+  transferRefundLeaves: [TransferRefundLeave]
+}
+
+# input
+input PatientBillInput {
+  patientId: String!
+  billDate: Time!
+}
+
+input PatientBillsInput {
+  patientId: [String!]!
+  billDate: Time!
+}
+
+input UpdatePatientBillNoteInput {
+  id: ID!
+  note: String
+}
+
+input UpdatePatientBillChargeDatesInput{
+	transferRefundStartDate: Time
+	transferRefundEndDate: Time
+	nonFixedChargeStartDate: Time
+	nonFixedChargeEndDate: Time
+}
+
+# Define query here
+extend type Query {
+  patientBill(patientId: ID!, billYear: Int!, billMonth: Int!): PatientBill
+  patientBills(billDate: Time!): [PatientBill!]!
+  printPatientBill(id: ID!): String!
+  printPatientBillGeneralTable(billDate: Time!): String!
+}
+
+# Define mutation here
+extend type Mutation {
+  createPatientBill(input: PatientBillInput): ID!
+  createPatientBills(input: PatientBillsInput): [PatientBill!]!
+  updatePatientBillNote(input: UpdatePatientBillNoteInput): Boolean!
+  updatePatientBillChargeDates(id: ID!,input:UpdatePatientBillChargeDatesInput!): Boolean!
+}

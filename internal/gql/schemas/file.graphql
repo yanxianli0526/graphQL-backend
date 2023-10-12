@@ -1,0 +1,17 @@
+# Types
+type File {
+  id: ID!
+  fileName: String!
+  url: String!
+}
+
+type UploadFileResponse {
+  signedUrl: String!
+  publicLink: String!
+  fullName: String!
+}
+
+# Define mutation here
+extend type Mutation {
+  createFile(fileName: String!): UploadFileResponse!
+}

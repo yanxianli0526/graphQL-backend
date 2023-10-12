@@ -1,0 +1,17 @@
+type Subsidy {
+  id: ID!
+  createdAt: Time!
+  itemName: String!
+  type: String!
+  price: Int!
+  unit: String
+  idNumber:String
+  note: String
+  sortIndex: Int
+  startDate: Time!
+  endDate: Time!
+  receiptStatus: String
+  receiptDate: Time
+  patient: Patient!
+  user: User!
+}

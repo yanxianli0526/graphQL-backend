@@ -1,0 +1,88 @@
+enum PrivacyType {
+  "顯示"
+  mask
+  "不顯示"
+  unmask
+}
+
+# Types
+type Organization {
+  id: ID!
+  name: String!
+  addressCity: String
+  addressDistrict: String
+  address: String
+  phone: String
+  fax: String
+  owner: String
+  email: String
+  taxIdNumber: String
+  branchs: PgStringArray
+  remittanceBank: String
+  remittanceIdNumber: String
+  remittanceUserName: String
+  establishmentNumber: String
+  fixedChargeStartMonth: String!
+  fixedChargeStartDate: Int!
+  fixedChargeEndMonth: String!
+  fixedChargeEndDate: Int!
+  nonFixedChargeStartMonth: String!
+  nonFixedChargeStartDate: Int!
+  nonFixedChargeEndMonth: String!
+  nonFixedChargeEndDate: Int!
+  transferRefundStartMonth: String!
+  transferRefundStartDate: Int!
+  transferRefundEndMonth: String!
+  transferRefundEndDate: Int!
+  privacy: PrivacyType!
+}
+
+# input
+input OrganizationSettingInput {
+  name: String!
+  addressCity: String
+  addressDistrict: String
+  address: String
+  phone: String
+  fax: String
+  owner: String
+  email: String
+  taxIdNumber: String
+  remittanceBank: String
+  remittanceIdNumber: String
+  remittanceUserName: String
+  establishmentNumber: String
+}
+
+input OrganizationBillDateRangeSettingInput {
+  fixedChargeStartMonth: String!
+  fixedChargeStartDate: Int!
+  fixedChargeEndMonth: String!
+  fixedChargeEndDate: Int!
+  nonFixedChargeStartMonth: String!
+  nonFixedChargeStartDate: Int!
+  nonFixedChargeEndMonth: String!
+  nonFixedChargeEndDate: Int!
+  transferRefundStartMonth: String!
+  transferRefundStartDate: Int!
+  transferRefundEndMonth: String!
+  transferRefundEndDate: Int!
+}
+
+input OrganizationPrivacyInput {
+  privacy: PrivacyType!
+}
+
+# Define query here
+extend type Query {
+  organization: Organization!
+}
+
+# Define mutations here
+extend type Mutation {
+  updateOrganization(input: OrganizationSettingInput): Boolean!
+  updateOrganizationPrivacy(input: OrganizationPrivacyInput): Boolean!
+  updateOrganizationBillDateRangeSetting(
+    input: OrganizationBillDateRangeSettingInput
+  ): Boolean!
+}

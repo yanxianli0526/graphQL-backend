@@ -1,0 +1,50 @@
+# # Types
+# type PatientBillSubsidy {
+#   id: ID!
+#   itemName: String
+#   type: String
+#   price: Int
+#   unit: String
+#   idNumber: String
+#   note: String
+#   startDate: Time
+#   endDate: Time
+#   userName: String!
+# }
+
+# input補助款
+input CreatePatientBillSubsidyInput {
+  id: ID!
+  itemName: String!
+  type: String!
+  price: Int!
+  unit: String
+  idNumber: String
+  startDate: Time!
+  endDate: Time!
+  note: String
+}
+
+input UpdatePatientBillSubsidyInput {
+  subsidyId: ID!
+  itemName: String
+  type: String!
+  unit: String!
+  price: Int!
+  idNumber: String
+  startDate: Time!
+  endDate: Time!
+  note: String
+}
+
+# Define query here
+extend type Query {
+  patientBillSubsidy(subsidyId: ID!): Subsidy
+}
+
+# Define mutation here
+extend type Mutation {
+  addPatientBillSubsidy(input: CreatePatientBillSubsidyInput): Boolean!
+  updatePatientBillSubsidy(input: UpdatePatientBillSubsidyInput): Boolean!
+  deletePatientBillSubsidy(subsidyId: ID!): Boolean!
+}

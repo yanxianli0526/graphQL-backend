@@ -1,0 +1,63 @@
+# go-gql-server gqlgen.yml file
+# Refer to https://gqlgen.com/config/
+# for detailed .gqlgen.yml documentation.
+
+schema:
+  - internal/gql/schemas/*.graphql
+# Let gqlgen know where to put the generated server
+exec:
+  filename: internal/gql/generated/exec.go
+  package: generated
+# Let gqlgen know where to put the generated models (if any)
+model:
+  filename: internal/gql/models/generated.go
+  package: gqlmodels
+# Let gqlgen know where to put the generated resolvers
+resolver:
+  filename: internal/gql/resolvers/generated/generated.go
+  type: Resolver
+  package: resolvers
+# autobind: []
+models:
+  PgStringArray:
+    model: graphql-go-template/internal/models.PgStringArray
+  TransferRefundItemsJsonType:
+    model: graphql-go-template/internal/models.TransferRefundItemsJsonType
+  Organization:
+    model: graphql-go-template/internal/models.Organization
+  OrganizationReceipt:
+    model: graphql-go-template/internal/models.OrganizationReceipt
+  OrganizationReceiptTemplateSetting:
+    model: graphql-go-template/internal/models.OrganizationReceiptTemplateSetting
+  AutoTextField:
+    model: graphql-go-template/internal/models.AutoTextField
+  File:
+    model: graphql-go-template/internal/models.File
+  User:
+    model: graphql-go-template/internal/models.User
+  Patient:
+    model: graphql-go-template/internal/models.Patient
+  OrganizationBasicChargeSetting:
+    model: graphql-go-template/internal/models.OrganizationBasicChargeSetting
+  OrganizationNonFixedChargeSetting:
+    model: graphql-go-template/internal/models.OrganizationNonFixedChargeSetting
+  BasicChargeSetting:
+    model: graphql-go-template/internal/models.BasicChargeSetting
+  BasicCharge:
+    model: graphql-go-template/internal/models.BasicCharge
+  NonFixedChargeRecord:
+    model: graphql-go-template/internal/models.NonFixedChargeRecord
+  TransferRefundLeave:
+    model: graphql-go-template/internal/models.TransferRefundLeave
+  Subsidy:
+    model: graphql-go-template/internal/models.Subsidy
+  SubsidySetting:
+    model: graphql-go-template/internal/models.SubsidySetting
+  DepositRecord:
+    model: graphql-go-template/internal/models.DepositRecord
+  PatientBill:
+    model: graphql-go-template/internal/models.PatientBill
+  PayRecord:
+    model: graphql-go-template/internal/models.PayRecord
+  PayRecordDetail:
+    model: graphql-go-template/internal/models.PayRecordDetail

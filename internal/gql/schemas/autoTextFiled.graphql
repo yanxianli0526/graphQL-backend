@@ -1,0 +1,24 @@
+# Types
+type AutoTextField {
+  id: ID!
+  moduleName: String!
+  itemName: String!
+  text: String!
+}
+
+# input
+input AutoTextFieldInput {
+  field: String!
+  value: String!
+}
+
+# Define query here
+extend type Query {
+  autoTextFields(field: String!): [AutoTextField!]!
+}
+
+# Define mutation here
+extend type Mutation {
+  createAutoTextField(input: AutoTextFieldInput!): Boolean!
+  deleteAutoTextField(input: AutoTextFieldInput!): Boolean!
+}

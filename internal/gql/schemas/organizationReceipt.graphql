@@ -1,0 +1,47 @@
+enum YearType {
+  "西元年"
+  Christian
+  "民國年"
+  Republican
+}
+
+enum MonthType {
+  "月份前面加0"
+  MM
+  "月份前面不加0"
+  M
+}
+
+# Types
+type OrganizationReceipt {
+  id: ID!
+  firstText: String
+  year: YearType
+  yearText: String
+  month: MonthType
+  monthText: String
+  lastText: String
+  isResetInNextCycle: Boolean
+}
+
+# input
+input OrganizationReceiptInput {
+  firstText: String
+  year: YearType
+  yearText: String
+  month: MonthType
+  monthText: String
+  lastText: String
+  isResetInNextCycle: Boolean
+}
+
+# Define mutations here
+extend type Mutation {
+  updateOrganizationReceipt(input: OrganizationReceiptInput): Boolean!
+}
+
+# Define queries here
+extend type Query {
+  organizationReceipt: OrganizationReceipt
+}
+

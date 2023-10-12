@@ -1,0 +1,46 @@
+enum PayRecordDetailType {
+  "收費"
+  charge
+  "退費"
+  refund
+}
+
+# Types
+type PayRecordDetail {
+  id: ID!
+  recordDate: Time!
+  type: PayRecordDetailType!
+  price: Int!
+  method: String!
+  payer: String
+  handler: String
+  note: String
+  user: User!
+}
+
+# input
+input PayRecordDetailInput {
+  recordDate: Time!
+  type: PayRecordDetailType!
+  price: Int!
+  method: String!
+  payer: String
+  handler: String
+  note: String
+}
+
+# Define query here
+extend type Query {
+  # payRecordDetails(payDate: Time!): [PayRecord!]!
+  payRecordDetail(id: ID!): PayRecordDetail!
+}
+
+# Define mutation here
+extend type Mutation {
+  createPayRecordDetail(
+    payRecrodId: ID!
+    input: PayRecordDetailInput!
+  ): Boolean!
+  updatePayRecordDetail(id: ID!, input: PayRecordDetailInput!): Boolean!
+  deletePayRecordDetail(id: ID!): Boolean!
+}

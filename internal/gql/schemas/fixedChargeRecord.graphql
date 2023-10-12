@@ -1,0 +1,17 @@
+## 這邊是為了給住民列表使用的
+## 其實是把固定月費(basicChargeSetting)跟補助款(subsidy)的資料捏再一起
+
+# Types
+type FixedChargeRecord {
+  updatedAt: Time
+  items: [String!]
+  patient: Patient! 
+}
+
+
+# Define query here
+extend type Query {
+  patientLatestFixedChargeRecords: [FixedChargeRecord!]!
+}
+
+

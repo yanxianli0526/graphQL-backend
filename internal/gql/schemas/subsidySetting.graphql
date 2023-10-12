@@ -1,0 +1,48 @@
+# Types
+type SubsidySetting {
+  id: ID!
+  itemName: String!
+  type: String!
+  price: Int!
+  unit: String
+  idNumber: String
+  sortIndex: Int
+  note: String
+}
+
+# input
+input SubsidySettingInput {
+  itemName: String!
+  type: String!
+  price: Int!
+  unit: String
+  idNumber: String
+  note: String
+}
+
+# input
+input SubsidySettingUpdateInput {
+  id: ID
+  itemName: String!
+  type: String!
+  price: Int!
+  unit: String
+  idNumber: String
+  note: String
+}
+
+# Define query here
+extend type Query {
+  subsidiesSetting(patientId: ID!): [SubsidySetting!]!
+  subsidySetting(id: ID!): SubsidySetting!
+}
+
+# Define mutation here
+extend type Mutation {
+  createSubsidiesSetting(patientId: ID!, input: [SubsidySettingInput!]!): Boolean!
+  updateSubsidiesSetting(
+    patientId: ID!
+    input: [SubsidySettingUpdateInput!]!
+    needDeleteId: [ID!]!
+  ): Boolean!
+}

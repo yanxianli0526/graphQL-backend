@@ -1,0 +1,50 @@
+# Types
+type TransferRefundLeave {
+  id: ID!
+  createdAt: Time!
+  startDate: Time!
+  endDate: Time!
+  reason: String!
+  isReserveBed: String!
+  note: String
+  items: TransferRefundItemsJsonType
+  receiptStatus: String
+  receiptDate: Time
+  user: User!
+}
+
+# input
+input TransferRefundLeaveItem {
+  itemName: String!
+  type: String!
+  price: Int!
+}
+
+input TransferRefundLeaveInput {
+  startDate: Time!
+  endDate: Time!
+  reason: String!
+  isReserveBed: String!
+  note: String
+  items: [TransferRefundLeaveItem!]!
+}
+
+# Define query here
+extend type Query {
+  transferRefundLeave(id: ID!): TransferRefundLeave!
+  transferRefundLeaves(
+    patientId: ID!
+    startDate: Time!
+    endDate: Time!
+  ): [TransferRefundLeave!]!
+}
+
+# Define mutation here
+extend type Mutation {
+  createTransferRefundLeave(
+    patientId: ID!
+    input: TransferRefundLeaveInput!
+  ): Boolean!
+  updateTransferRefundLeave(id: ID!, input: TransferRefundLeaveInput!): Boolean!
+  deleteTransferRefundLeave(id: ID!): Boolean!
+}

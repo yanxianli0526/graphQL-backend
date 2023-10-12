@@ -1,0 +1,12 @@
+.env
+
+
+# misc
+.DS_Store
+inventory-toll-file-upload.sa.json
+.sonar_lock
+report-task.txt
+sonar-go-to-slang-darwin-amd64
+/vendor
+cover.out
+cover.html

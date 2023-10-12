@@ -1,0 +1,64 @@
+# Types
+type NonFixedChargeRecord {
+  id: ID!
+  createdAt: Time!
+  updatedAt: Time
+  nonFixedChargeDate: Time!
+  itemCategory: String!
+  itemName: String!
+  type: String!
+  unit: String!
+  price: Int!
+  quantity: Int!
+  subtotal: Int!
+  note: String
+  taxType: String!
+  patient: Patient!
+  user: User!
+  receiptStatus: String
+  receiptDate: Time
+}
+
+type PatientLatestNonFixedChargeRecords {
+  thisMonth: [NonFixedChargeRecord!]!
+  lastMonth: [NonFixedChargeRecord!]!
+  latestUpdatedRecord: [NonFixedChargeRecord!]!
+}
+
+# input
+input NonFixedChargeRecordInput {
+  nonFixedChargeDate: Time!
+  itemCategory: String!
+  itemName: String!
+  type: String!
+  unit: String!
+  price: Int!
+  quantity: Int!
+  subtotal: Int!
+  note: String
+  taxType: String!
+}
+
+# Define query here
+extend type Query {
+  nonFixedChargeRecord(id: ID!): NonFixedChargeRecord!
+  nonFixedChargeRecords(
+    patientId: ID!
+    startDate: Time!
+    endDate: Time!
+  ): [NonFixedChargeRecord!]!
+  patientLatestNonFixedChargeRecords: PatientLatestNonFixedChargeRecords!
+}
+
+# Define mutation here
+extend type Mutation {
+  createNonFixedChargeRecord(
+    patientId: ID!
+    input: [NonFixedChargeRecordInput!]!
+  ): Boolean!
+  updateNonFixedChargeRecord(
+    id: ID!
+    input: NonFixedChargeRecordInput
+  ): Boolean!
+  deleteNonFixedChargeRecord(id: ID!): Boolean!
+}

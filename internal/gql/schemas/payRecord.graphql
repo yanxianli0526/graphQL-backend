@@ -1,0 +1,71 @@
+enum OpenMethodType {
+  "所有帳單費用結算"
+  allTax
+  "分稅別結算"
+  selectTax
+}
+
+enum TaxType {
+  "印花稅"
+  stampTax
+  "營業稅"
+  businessTax
+  "免稅"
+  noTax
+  "其他"
+  other
+}
+
+# Types
+type PayRecord {
+  id: ID!
+  createdAt: Time!
+  # payDate: Time!
+  receiptNumber: String!
+  taxType: String!
+  amountDue: Int!
+  paidAmount: Int!
+  note: String
+  payYear:Int!
+  payMonth:Int!
+  isInvalid: Boolean!
+  invalidDate: Time
+  invalidCaption: String
+  patient: Patient!
+  user: User!
+  createdUser: User!
+  invalidUser: User
+  payRecordDetails: [PayRecordDetail]
+}
+
+# input
+input PayRecordInput {
+  payDate: Time!
+  patientsId: [ID!]
+  openMethod: OpenMethodType!
+  taxTypes: [TaxType]
+}
+
+input InvalidPayRecordInput {
+  invalidDate: Time!
+  invalidCaption: String
+}
+
+# Define query here
+extend type Query {
+  payRecords(payDate: Time!): [PayRecord!]!
+  payRecord(id: ID!): PayRecord!
+  printPayRecordDetail(id: ID!): String!
+  printPayRecordPart(id: ID!): String!
+  printPayRecordPartByTaxType(id: ID!): String!
+  printPayRecordsPartByTaxType(ids: [ID!]!): String!
+  printPayRecordGeneralTable(billDate: Time!): String!
+}
+
+# Define mutation here
+extend type Mutation {
+  createPayRecords(input: PayRecordInput!): Boolean!
+  invalidPayRecord(id: ID!, input: InvalidPayRecordInput!): Boolean!
+  cancelInvalidPayRecord(id: ID!): Boolean!
+  updatePayRecorNote(id: ID!, note: String!): Boolean!
+}

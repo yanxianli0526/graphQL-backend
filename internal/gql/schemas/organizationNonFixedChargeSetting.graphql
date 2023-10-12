@@ -1,0 +1,38 @@
+# Types
+type OrganizationNonFixedChargeSetting {
+  id: ID!
+  itemCategory: String!
+  itemName: String!
+  type: String!
+  unit: String!
+  price: Int!
+  taxType: String!
+}
+
+# input
+input OrganizationNonFixedChargeSettingInput {
+  itemCategory: String!
+  itemName: String!
+  type: String!
+  unit: String!
+  price: Int!
+  taxType: String!
+}
+
+# Define query here
+extend type Query {
+  organizationNonFixedChargeSetting(id: ID!): OrganizationNonFixedChargeSetting!
+  organizationNonFixedChargeSettings: [OrganizationNonFixedChargeSetting!]!
+}
+
+# Define mutation here
+extend type Mutation {
+  createOrganizationNonFixedChargeSetting(
+    input: OrganizationNonFixedChargeSettingInput
+  ): Boolean!
+  updateOrganizationNonFixedChargeSetting(
+    id: ID!
+    input: OrganizationNonFixedChargeSettingInput
+  ): Boolean!
+  deleteOrganizationNonFixedChargeSetting(id: ID!): Boolean!
+}

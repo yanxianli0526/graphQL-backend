@@ -1,0 +1,51 @@
+# type PatientBillBasicCharge {
+#   id: ID!
+#   itemName: String
+#   type: String
+#   unit: String
+#   price: Int
+#   note: String
+#   taxType: String
+#   startDate: Time
+#   endDate: Time
+#   userName: String!
+# }
+
+# input固定費用
+input CreatePatientBillBasicChargeInput {
+  id: ID!
+  itemName: String!
+  type: String!
+  unit: String!
+  price: Int!
+  taxType: String!
+  startDate: Time!
+  endDate: Time!
+  note: String
+}
+
+input UpdatePatientBillBasicChargeInput {
+  basicChargeId: ID!
+  itemName: String!
+  type: String!
+  unit: String!
+  price: Int!
+  taxType: String!
+  startDate: Time!
+  endDate: Time!
+  note: String
+}
+
+# Define query here
+extend type Query {
+  patientBillBasicCharge(basicChargeId: ID!): BasicCharge
+}
+
+# Define mutation here
+extend type Mutation {
+  addPatientBillBasicCharge(input: CreatePatientBillBasicChargeInput): Boolean!
+  updatePatientBillBasicCharge(
+    input: UpdatePatientBillBasicChargeInput
+  ): Boolean!
+  deletePatientBillBasicCharge(basicChargeId: ID!): Boolean!
+}

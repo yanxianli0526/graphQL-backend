@@ -1,0 +1,16 @@
+type BasicCharge {
+  id: ID!
+  itemName: String!
+  type: String!
+  unit: String!
+  price: Int!
+  taxType: String!
+  startDate: Time!
+  endDate: Time!
+  note: String
+  receiptStatus: String
+  receiptDate: Time
+  sortIndex: Int
+  patient: Patient!
+  user: User!
+}
