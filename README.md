@@ -1,5 +1,11 @@
 # 此後端 graphql 和 restful 為並存的,先說明 graphql
 
+## 摘要
+可能很多人對GraphQL不太熟悉,如果想瞭解也可以看看這些文章  
+[why-use-GraphQL](https://ithelp.ithome.com.tw/articles/10286331)  
+[GraphQL介紹及教學](https://ithelp.ithome.com.tw/articles/10285159)  
+[收費庫存系統介紹](https://docs.google.com/presentation/d/1y72Bj0iTMf483uiVqsrMBlD7X16iHNeJ/edit?usp=sharing&ouid=108161202519151968926&rtpof=true&sd=true)  
+
 ## graphql 部分
 
 ### 設定 env
@@ -80,13 +86,9 @@ reference:https://linuxhint.com/tuning-postgres-max-connections/
 4. docker exec -u postgres postgres psql localTest2 postgres -f /file.sql
 
 ### 匯出資料
-pg_dump -U postgres -d test123 -f test123.sql
+pg_dump -U postgres -d backup -f backup.sql
 ### 匯入資料
-psql -U postgres -d test123 -f test123.sql 
+psql -U postgres -d backup -f backup.sql 
 
 
-### 結語
-可能很多人對GraphQL不太熟悉,如果想瞭解也可以看看這些文章  
-[why-use-GraphQL](https://ithelp.ithome.com.tw/articles/10286331)  
-[GraphQL介紹及教學](https://ithelp.ithome.com.tw/articles/10285159)  
 
