@@ -13,9 +13,8 @@
 1. 修改 `internal/gql/schemas` (還不確定的可以先放在 schema.graphql 裡 未來再獨立成一個檔案)
 2. 修改 `internal/models`
 3. 修改 `gqlgen.yml`
-4. `make graph-build` (這一步很重要 它會透過 schema.graphql 跟 gqlgen.yml,進而生成三個檔案(exec 跟兩個 generated)
-5. 修改 GQLGen 產生的 Resolvers
-6. 可以參考 fixedChargeSetting.graphql 裡面的 FixedChargeSetting(相關 type 及 function),resolvers/FixedChargeSetting 和 models/FixedChargeSetting 裡面有新增,更新和查詢的實作
+4. `make graph-build` (這一步很重要 它會透過 schema.graphql 跟 gqlgen.yml,進而生成三個檔案(exec 跟兩個 generated))
+5. 實作階段,可以參考 basicChargeSetting.graphql 裡面的 BasicChargeSetting(相關 type 及 function),resolvers/basicChargeSetting 和 models/basicChargeSetting 裡面有新增,更新和查詢的實作
 
 ### 執行方式
 
@@ -75,8 +74,8 @@ reference:https://linuxhint.com/tuning-postgres-max-connections/
 ## 資料庫
 
 ### postgresql 設定
-1. docker pull postgres
-2. docker run -d --name postgres -p 8080:5432 -e POSTGRES_PASSWORD=admin -e POSTGRES_DB=localTest2 postgres
+1. docker pull postgres:14.9
+2. docker run -d --name postgres -p 5432:5432 -e POSTGRES_PASSWORD=test -e POSTGRES_USER=test  -e POSTGRES_DB=localTest2 postgres:14.9
 3. docker cp ./backup.sql postgres:/file.sql
 4. docker exec -u postgres postgres psql localTest2 postgres -f /file.sql
 
@@ -84,3 +83,10 @@ reference:https://linuxhint.com/tuning-postgres-max-connections/
 pg_dump -U postgres -d test123 -f test123.sql
 ### 匯入資料
 psql -U postgres -d test123 -f test123.sql 
+
+
+### 結語
+可能很多人對GraphQL不太熟悉,如果想瞭解也可以看看這些文章
+[why-use-GraphQL](https://ithelp.ithome.com.tw/articles/10286331)  
+[GraphQL介紹及教學](https://ithelp.ithome.com.tw/articles/10285159)  
+
