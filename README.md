@@ -18,7 +18,7 @@
 
 ### 執行方式
 
-0. 要跟 SRE 或是收庫開發者拿一份 inventory-toll-file-upload.sa.json 的檔案(這個檔案要無法公開,主要是資安和權限的問題),未來請其他開發者不要推到 git 上
+0. 要跟 SRE 或是收庫開發者拿一份 inventory-toll-file-upload.sa.json 的檔案(這個檔案要無法公開,主要是資安和權限的問題),未來請其他開發者不要推到 git 上(如果沒有json檔又真的很想執行可以把列印相關的功和go:embed的部分一起拔掉原則上就可以執行了)  
 1. `make run`
 2. 用網頁打開 http://localhost:4000
 3. 有正常的打開看到以下畫面基本上就畢業了,可以再試試看新增 api 有沒有正常的把資料寫入資料庫  
@@ -86,7 +86,7 @@ psql -U postgres -d test123 -f test123.sql
 
 
 ### 結語
-可能很多人對GraphQL不太熟悉,如果想瞭解也可以看看這些文章
+可能很多人對GraphQL不太熟悉,如果想瞭解也可以看看這些文章  
 [why-use-GraphQL](https://ithelp.ithome.com.tw/articles/10286331)  
 [GraphQL介紹及教學](https://ithelp.ithome.com.tw/articles/10285159)  
 
