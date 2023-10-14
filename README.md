@@ -6,6 +6,11 @@
 [GraphQL介紹及教學](https://ithelp.ithome.com.tw/articles/10285159)  
 [收費庫存系統介紹](https://docs.google.com/presentation/d/1y72Bj0iTMf483uiVqsrMBlD7X16iHNeJ/edit?usp=sharing&ouid=108161202519151968926&rtpof=true&sd=true)  
 
+
+## Postman
+
+可以透過postman匯入graphQL.postman_collection.json和環境變數graphQL.postman_environment.json更快了解本系統及GraphQL使用方式,如果在本地測試的時候header沒有token的情況下,可以把internal/auth/middleware裡面的的檢查拿掉  
+
 ## graphql 部分
 
 ### 設定 env

@@ -1,0 +1,2923 @@
+{
+	"info": {
+		"_postman_id": "2e8001e2-c5f0-44c2-ba6c-e9ec0f4bb320",
+		"name": "graphQL",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "AutoCompletes",
+			"item": [
+				{
+					"name": "Get AutoCompletes",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query {\n  autoTextFileds(filed: \"t1.t2\") {\n    id\n    moduleName\n    itemName\n    text\n  }\n}\n",
+								"variables": ""
+							}
+						},
+						"url": "localhost:4000/api/graphql"
+					},
+					"response": []
+				},
+				{
+					"name": "Create AutoComplete",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "mutation {\n  createAutoTextFiled(\n    input: { filed: \"t1.t2\", value: \"t3\" }\n  )\n}\n",
+								"variables": ""
+							}
+						},
+						"url": "localhost:4000/api/graphql"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete AutoComplete",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "mutation {\n  deleteAutoTextFiled(input: { filed: \"t1.t2\", value: \"t3\" })\n}\n",
+								"variables": ""
+							}
+						},
+						"url": "localhost:4000/api/graphql"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "BasicCharge Setting",
+			"item": [
+				{
+					"name": "Get BasicCharges By PatientID",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "\nquery {\n  basicChargeSettings(patientId: \"bbb55201-b84b-4c7b-8043-10b6a3f29e09\") {\n    id\n    organizationBasicChargeSetting {\n      id\n      itemName\n    }\n    user {\n      id\n      username\n    }\n  }\n}\n",
+								"variables": ""
+							}
+						},
+						"url": "localhost:4000/api/graphql"
+					},
+					"response": []
+				},
+				{
+					"name": "Update BasicCharge Settings",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "\nmutation {\n  updateBasicChargeSettings(\n    patientId: \"bbb55201-b84b-4c7b-8043-10b6a3f29e09\"\n    input: [\n      {\n        id: \"6a7ef405-f549-46e5-a013-f62175a5744e\"\n        organizationBasicChargeId: \"357b25f6-8863-4e22-896d-20b31eafd9cf\"\n      }\n      {\n        id: \"90f3200f-e8b2-4c2b-b929-6d94f7bfff99\"\n        organizationBasicChargeId: \"5924c855-4c6e-4eb9-a3a1-0909fbf498c8\"\n      }\n      { organizationBasicChargeId: \"5924c855-4c6e-4eb9-a3a1-0909fbf498c8\" }\n    ]\n  )\n}\n",
+								"variables": ""
+							}
+						},
+						"url": "localhost:4000/api/graphql"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Bill Charge Setting",
+			"item": [
+				{
+					"name": "Create Bill Charge Setting",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "mutation {\n  createBillChargeSetting(\n    input: {\n      fixedChargeStartMonth: \"thisMonth\"\n      fixedChargeStartDate: 1\n      fixedChargeEndMonth: \"thisMonth\"\n      fixedChargeEndDate: 31\n      nonFixedChargeStartMonth: \"lastMonth\"\n      nonFixedChargeStartDate: 1\n      nonFixedChargeEndMonth: \"lastMonth\"\n      nonFixedChargeEndDate: 31\n      transferRefundStartMonth: \"lastMonth\"\n      transferRefundStartDate: 1\n      transferRefundEndMonth: \"lastMonth\"\n      transferRefundEndDate: 31\n    }\n  )\n}",
+								"variables": ""
+							}
+						},
+						"url": "localhost:4000/api/graphql"
+					},
+					"response": []
+				},
+				{
+					"name": "Update Bill Charge Setting",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "mutation {\n  updateBillChargeSetting(\n    id:\"f19b4420-0855-448b-81d6-3d48f8b71da9\"\n    input: {\n      fixedChargeStartMonth: \"thisMonth\"\n      fixedChargeStartDate: 2\n      fixedChargeEndMonth: \"thisMonth\"\n      fixedChargeEndDate: 3\n      nonFixedChargeStartMonth: \"lastMonth\"\n      nonFixedChargeStartDate: 2\n      nonFixedChargeEndMonth: \"lastMonth\"\n      nonFixedChargeEndDate: 3\n      transferRefundStartMonth: \"lastMonth\"\n      transferRefundStartDate: 2\n      transferRefundEndMonth: \"lastMonth\"\n      transferRefundEndDate: 3\n      patientConsumptionRecordStartMonth:\"lastMonth\"\n      patientConsumptionRecordStartDate:2\n      patientConsumptionRecordEndMonth:\"lastMonth\"\n      patientConsumptionRecordEndDate:4\n    }\n  )\n}",
+								"variables": ""
+							}
+						},
+						"url": "localhost:4000/api/graphql"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Bill Charge Setting",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "mutation {\n  deleteBillChargeSetting(\n    id:\"f19b4420-0855-448b-81d6-3d48f8b71da9\"    \n  )\n}",
+								"variables": ""
+							}
+						},
+						"url": "localhost:4000/api/graphql"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Bill Charge Setting",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "\nquery {\n  billChargeSetting(id:\"5e0c05c1-7a98-4e52-a9ea-e35d9fc96439\") {\n    id\n    fixedChargeStartMonth\n    fixedChargeStartDate\n    fixedChargeEndMonth\n    fixedChargeEndDate\n    nonFixedChargeStartMonth\n    nonFixedChargeStartDate\n    nonFixedChargeEndMonth\n    nonFixedChargeEndDate\n    transferRefundStartMonth\n    transferRefundStartDate\n    transferRefundEndMonth\n    transferRefundEndDate\n    patientConsumptionRecordStartMonth\n    patientConsumptionRecordStartDate\n    patientConsumptionRecordEndMonth\n    patientConsumptionRecordEndDate\n    user{\n        id\n    }\n  }\n}\n",
+								"variables": ""
+							}
+						},
+						"url": "localhost:4000/api/graphql"
+					},
+					"response": []
+				},
+				{
+					"name": "List Bill Charge Settings",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "\nquery {\n  billChargeSettings {\n    id\n    fixedChargeStartMonth\n    fixedChargeStartDate\n    fixedChargeEndMonth\n    fixedChargeEndDate\n    nonFixedChargeStartMonth\n    nonFixedChargeStartDate\n    nonFixedChargeEndMonth\n    nonFixedChargeEndDate\n    transferRefundStartMonth\n    transferRefundStartDate\n    transferRefundEndMonth\n    transferRefundEndDate\n    patientConsumptionRecordStartMonth\n    patientConsumptionRecordStartDate\n    patientConsumptionRecordEndMonth\n    patientConsumptionRecordEndDate\n  }\n}\n",
+								"variables": ""
+							}
+						},
+						"url": "localhost:4000/api/graphql"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "File",
+			"item": [
+				{
+					"name": "Create File",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "mutation {\n  createFile(fileName: \"asdasdasds\") {\n    signedUrl\n    publicLink\n    fullName\n  }\n}\n",
+								"variables": ""
+							}
+						},
+						"url": "localhost:4000/api/graphql"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "DepositRecord",
+			"item": [
+				{
+					"name": "Get DepositRecord",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query {\n  depositRecord(id: \"3f92fc35-fd3d-4b99-8188-f1a4d3fc16c1\") {\n    id\n    idNumber\n    date\n    type\n    price\n    drawee\n    note\n    invalid\n    patient {\n      firstName\n      lastName\n    }\n    user {\n        firstName\n    }\n  }\n}",
+								"variables": ""
+							}
+						},
+						"url": "localhost:4000/api/graphql"
+					},
+					"response": []
+				},
+				{
+					"name": "List DepositRecords",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query {\n  depositRecords(patientId: \"0ea77b55-fde3-4214-b14c-4d471b0eca55\") {\n    id\n    idNumber\n    date\n    type\n    price\n    drawee\n    note\n    invalid\n    patient {\n      firstName\n      lastName\n    }\n    user {\n        firstName\n    }\n  }\n}",
+								"variables": ""
+							}
+						},
+						"url": "localhost:4000/api/graphql"
+					},
+					"response": []
+				},
+				{
+					"name": "List Patient Latest DepositRecords",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query {\n  patientLatestDepositRecords {\n    latestRecord{\n        id\n        date\n        updatedAt\n        patient{\n            id\n            firstName\n        }\n    }\n    latestUpdatedRecord{\n        id\n        date\n        updatedAt\n        patient{\n            id\n            firstName\n        }\n    }\n  }\n}",
+								"variables": ""
+							}
+						},
+						"url": "localhost:4000/api/graphql"
+					},
+					"response": []
+				},
+				{
+					"name": "Create DepositRecord",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "mutation {\n  createDepositRecord(\n    input: {\n      date: \"2022-03-11T10:31:15.000Z\"\n      type: \"charge\"\n      price: 400\n      drawee: \"yanxian1\"\n      note: \"asd\\nasd\\nee\"\n      patientId: \"0f29f5b8-b281-4fa5-b322-6cf44556a731\"\n    }\n  )\n}\n",
+								"variables": ""
+							}
+						},
+						"url": "localhost:4000/api/graphql"
+					},
+					"response": []
+				},
+				{
+					"name": "Print DepositRecord",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query {\n  printDepositRecord(id: \"41ed4fb8-c399-4193-9518-f9069924f4c5\") \n}\n",
+								"variables": ""
+							}
+						},
+						"url": "localhost:4000/api/graphql"
+					},
+					"response": []
+				},
+				{
+					"name": "Update DepositRecord",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "mutation {\n  updateDepositRecord(\n    id: \"9a2c9282-fe19-45a1-8b3d-7cb6632ca9aa\"\n    input: { note: \"33333\" }\n  ) {\n    id\n  }\n}\n",
+								"variables": ""
+							}
+						},
+						"url": "localhost:4000/api/graphql"
+					},
+					"response": []
+				},
+				{
+					"name": "Invalid DepositRecord",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "mutation {\n  invalidDepositRecord(\n    id: \"67dd33c9-3a94-43a8-9393-b44c18ad1c2e\"\n  )\n}\n",
+								"variables": ""
+							}
+						},
+						"url": "localhost:4000/api/graphql"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Inventory Category",
+			"item": [
+				{
+					"name": "Update Inventory Categories",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "mutation {\n  updateInventoryCategories(\n    input: [\n      { id:\"cbf5ba39-7527-409f-a09a-7ee1ca86cccb\" name: \"t4\", idNumber: \"c1\" }\n      { name: \"t5\", idNumber: \"c2\" }\n      { name: \"t6\", }\n    ]\n  )\n}",
+								"variables": ""
+							}
+						},
+						"url": "localhost:4000/api/graphql"
+					},
+					"response": []
+				},
+				{
+					"name": "List Inventory Categories",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query {\n  inventoryCategories{\n      id\n      name\n      idNumber\n      sortIndex\n  }\n}",
+								"variables": ""
+							}
+						},
+						"url": "localhost:4000/api/graphql"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Inventory Category By ID",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query {\n  inventoryCategory(id:\"cbf5ba39-7527-409f-a09a-7ee1ca86cccb\"){\n      id\n      name\n      idNumber\n      sortIndex\n  }\n}",
+								"variables": ""
+							}
+						},
+						"url": "localhost:4000/api/graphql"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Inventory Item",
+			"item": [
+				{
+					"name": "Create Inventory Item",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "mutation {\n  createInventoryItem(\n    input: {\n      name: \"紙巾003\"\n      idNumber: \"003\"\n      isActive: true\n      note: \"weqe\"\n      minUnit: \"個\"\n      minUnitCost: 20.1\n      minUnitPrice: 40.2\n      taxType: \"stampTax\"\n      packUnit:\"aaaa\"\n      packUnitPrice:20.3\n      packCount:2\n      inventoryCategoryId: \"cbf5ba39-7527-409f-a09a-7ee1ca86cccb\"\n    }\n  )\n}",
+								"variables": ""
+							}
+						},
+						"url": "localhost:4000/api/graphql"
+					},
+					"response": []
+				},
+				{
+					"name": "Updatee Inventory Item",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "mutation {\n  updateInventoryItem(\n    id:\"02e40175-4d3f-4afe-8de5-e9a1f1c3d744\"\n    input: {\n      name: \"毛巾1\"\n      idNumber: \"003\"\n      isActive: false\n      note: \"q1\"\n      minUnit: \"個個\"\n      minUnitCost: 45\n      minUnitPrice: 85\n      taxType: \"stampTax\"\n      packUnit: \"包包單位\"\n      packCount: 45\n      packUnitPrice: 65\n      inventoryCategoryId: \"ec18906a-098d-40ef-a96a-9349b1489163\"\n    }\n  )\n}",
+								"variables": ""
+							}
+						},
+						"url": "localhost:4000/api/graphql"
+					},
+					"response": []
+				},
+				{
+					"name": "Check InventoryItem ID Number",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "mutation {\n  checkInventoryItemIdNumberIsExist(\n      inventoryCategoryId:\"ec18906a-098d-40ef-a96a-9349b1489163\"\n      idNumber:\"\"\n  )\n}",
+								"variables": ""
+							}
+						},
+						"url": "localhost:4000/api/graphql"
+					},
+					"response": []
+				},
+				{
+					"name": "Get InventoryItem By ID",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "\nquery {\n  inventoryItem(id: \"252ccda4-6377-4469-854c-055fa705bb35\") {\n    id\n    name\n    idNumber\n    isActive\n    note\n    minUnit\n    minUnitCost\n    minUnitPrice\n    taxType\n    packUnit\n    packCount\n    packUnitPrice\n    inventoryCategory {\n      id\n      name\n    }\n  }\n}\n",
+								"variables": ""
+							}
+						},
+						"url": "localhost:4000/api/graphql"
+					},
+					"response": []
+				},
+				{
+					"name": "List InventoryItems",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "\nquery {\n  inventoryItems {\n    id\n    name\n    idNumber\n    isActive\n    note\n    minUnit\n    minUnitCost\n    minUnitPrice\n    taxType\n    packUnit\n    packCount\n    packUnitPrice\n    inventoryCategory {\n      id\n      name\n    }\n  }\n}\n",
+								"variables": ""
+							}
+						},
+						"url": "localhost:4000/api/graphql"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Non FixedCharge Record",
+			"item": [
+				{
+					"name": "Create Non FixedCharge Record",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "mutation {\n  createNonFixedChargeRecord(\n    input: [\n      {\n        nonFixedChargeDate: \"2022-04-12T10:31:15.000Z\"\n        itemCategory:\"耗材\"\n        itemName: \"項目2\"\n        type:\"charge\"\n        unit: \"包\"\n        price: 2\n        quantity: 6\n        subtotal: 12\n        note: \"note1\"\n        taxType:\"123\"\n      }\n    ]\n    patientId: \"029abe95-efc3-421b-b735-47ce57d4e8c8\"\n  )\n}\n",
+								"variables": ""
+							}
+						},
+						"url": "localhost:4000/api/graphql"
+					},
+					"response": []
+				},
+				{
+					"name": "Update Non FixedCharge Record",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "mutation {\n  updateNonFixedChargeRecord(\n    id: \"dac483fb-b405-4cfa-ad4c-8b56f393f31f\"\n    input: {\n      nonFixedChargeDate: \"2022-04-24T10:31:15.000Z\"\n      itemCategory: \"aaaaa\"\n      itemName: \"item1\"\n      type:\"charge\"\n      unit: \"unit1\"\n      price: 1\n      quantity: 1\n      subtotal: 1\n      note: \"note1\"\n      taxType:\"a1\"\n    }\n  )\n}\n",
+								"variables": ""
+							}
+						},
+						"url": "localhost:4000/api/graphql"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Non FixedCharge Record",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "mutation {\n  deleteNonFixedChargeRecord(\n    id: \"571e8ee2-1ad9-42a4-adc2-357fc707e354\"\n  )\n}\n",
+								"variables": ""
+							}
+						},
+						"url": "localhost:4000/api/graphql"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Non FixedCharge Record",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query {\n  nonFixedChargeRecord(id: \"45ffff70-68be-4c1d-a037-b69e0af37462\") {\n    id\n    nonFixedChargeDate\n    itemCategory\n    itemName\n    type\n    unit\n    price\n    quantity\n    subtotal\n    note\n    taxType\n    receiptStatus\n    patient {\n      id\n      firstName\n      lastName\n    }\n    user {\n      id\n      firstName\n      lastName\n    }\n  }\n}",
+								"variables": ""
+							}
+						},
+						"url": "localhost:4000/api/graphql"
+					},
+					"response": []
+				},
+				{
+					"name": "List Non Record By PatientID",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query {\n  nonFixedChargeRecords(patientId: \"029abe95-efc3-421b-b735-47ce57d4e8c8\",startDate:\"2022-04-01T10:31:15.000Z\",endDate:\"2022-06-23T10:31:15.000Z\") {\n    id\n    nonFixedChargeDate\n    itemCategory\n    itemName\n    type\n    unit\n    price\n    quantity\n    subtotal\n    note\n    taxType\n    patient {\n      id\n      firstName\n      lastName\n    }\n    user {\n      id\n      firstName\n      lastName\n    }\n  }\n}",
+								"variables": ""
+							}
+						},
+						"url": "localhost:4000/api/graphql"
+					},
+					"response": []
+				},
+				{
+					"name": "List Patient Latest Non FixedCharge Record",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query {\n  patientLatestNonFixedChargeRecords {\n    lastMonth {\n      id\n      subtotal\n      patient {\n        id\n        firstName\n      }\n    }\n    thisMonth {\n      id\n      subtotal\n      patient {\n        id\n        firstName\n      }\n    }\n    latestUpdatedRecord {\n      updatedAt\n      patient {\n        id\n        firstName\n      }\n    }\n  }\n}\n",
+								"variables": ""
+							}
+						},
+						"url": "localhost:4000/api/graphql"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Oauth",
+			"item": [
+				{
+					"name": "login",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "localhost:4000/api/nis/login"
+					},
+					"response": []
+				},
+				{
+					"name": "logout",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "mutation {\n  logout\n}\n",
+								"variables": ""
+							}
+						},
+						"url": "localhost:4000/api/graphql"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Organization",
+			"item": [
+				{
+					"name": "Get Organization",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query {\n  organization {\n    name\n    addressCity\n    addressDistrict\n    address\n    fax\n    owner\n    email\n    taxIdNumber\n    remittanceBank\n    remittanceIdNumber\n    remittanceUserName\n    establishmentNumber\n    fixedChargeStartMonth\n    fixedChargeStartDate\n    fixedChargeEndMonth\n    fixedChargeEndDate\n    nonFixedChargeStartMonth\n    nonFixedChargeStartDate\n    nonFixedChargeEndMonth\n    nonFixedChargeEndDate\n    transferRefundStartMonth\n    transferRefundStartDate\n    transferRefundEndMonth\n    transferRefundEndDate\n    printYear\n  }\n}\n",
+								"variables": ""
+							}
+						},
+						"url": "localhost:4000/api/graphql"
+					},
+					"response": []
+				},
+				{
+					"name": "Update Organization By ID",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "mutation {\n  updateOrganizationReceipt(\n    input: {\n      firstText: \"1\"\n      year: Christian\n      yearText: \"3\"\n      month: MM\n      monthText: \"5\"\n      lastText: \"6\"\n      isResetInNextCycle: false\n    }\n  )\n}\n",
+								"variables": ""
+							}
+						},
+						"url": "localhost:4000/api/graphql"
+					},
+					"response": []
+				},
+				{
+					"name": "Update Organization BillDateRangeSetting By ID",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "mutation {\n  updateOrganizationBillDateRangeSetting(\n    input: {\n      fixedChargeStartMonth: \"thisMonth\"\n      fixedChargeStartDate: 1\n      fixedChargeEndMonth: \"thisMonth\"\n      fixedChargeEndDate: 31\n      nonFixedChargeStartMonth: \"thisMonth\"\n      nonFixedChargeStartDate: 1\n      nonFixedChargeEndMonth: \"thisMonth\"\n      nonFixedChargeEndDate: 31\n      transferRefundStartMonth: \"thisMonth\"\n      transferRefundStartDate: 1\n      transferRefundEndMonth: \"thisMonth\"\n      transferRefundEndDate: 31\n    }\n  )\n}",
+								"variables": ""
+							}
+						},
+						"url": "localhost:4000/api/graphql"
+					},
+					"response": []
+				},
+				{
+					"name": "Update Organization Print Setting",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "mutation {\n  updateOrganizationPrintSetting(\n    input: {\n      privacy: unmask\n      printYear: Christian\n    }\n  )\n}\n",
+								"variables": ""
+							}
+						},
+						"url": "localhost:4000/api/graphql"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Organization Basic Charge Setting",
+			"item": [
+				{
+					"name": "Create Organization BasicCharge Setting",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "mutation {\n  createOrganizationBasicChargeSetting(\n    input: { itemName:\"aaaaa1\"type:\"charge\",unit:\"test01\",price:100,taxType:\"businessTax\" }\n  ) \n}\n",
+								"variables": ""
+							}
+						},
+						"url": "localhost:4000/api/graphql"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Organization BasicCharge Setting By ID",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query {\n  organizationBasicChargeSetting(id: \"ce9a062e-bb70-4939-bdf1-800ec15ab3b2\") {\n    id\n    itemName\n    type\n    unit\n    price\n    taxType\n  }\n}\n",
+								"variables": ""
+							}
+						},
+						"url": "localhost:4000/api/graphql"
+					},
+					"response": []
+				},
+				{
+					"name": "List Organization BasicCharge Setting",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query {\n    organizationBasicChargeSettings {\n        id,\n        itemName,\n        type,\n        unit,\n        price,\n        taxType\n   }\n }",
+								"variables": ""
+							}
+						},
+						"url": "localhost:4000/api/graphql"
+					},
+					"response": []
+				},
+				{
+					"name": "Update Organization BasicCharge Setting By ID",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "mutation {\n  updateOrganizationBasicChargeSetting(id:\"ce9a062e-bb70-4939-bdf1-800ec15ab3b2\",input:{itemName:\"item04\",type:\"charge\",unit:\"item04\",price:400,taxType:\"businessTax\"})   \n}",
+								"variables": ""
+							}
+						},
+						"url": "localhost:4000/api/graphql"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Organization BasicChage Setting By ID",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "mutation {\n  deleteOrganizationBasicChargeSetting(id:\"5501c49f-b25f-437a-8947-19944f78beae\")\n }",
+								"variables": ""
+							}
+						},
+						"url": "localhost:4000/api/graphql"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Organization Non Fixed Charge Setting",
+			"item": [
+				{
+					"name": "Create Organization Non FixedCharge Setting",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "mutation {\n  createOrganizationNonFixedChargeSetting(\n    input: { itemCategory:\"qqqqq1\",itemName:\"aa09\",type:\"charge\",unit:\"盒\",price:400,taxType:\"stampTax\" }\n  ) \n}\n",
+								"variables": ""
+							}
+						},
+						"url": "localhost:4000/api/graphql"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Organization Non FixedCharge Setting By ID",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query {\n  organizationNonFixedChargeSetting(id: \"0dfb6db6-da50-47a6-96a5-160689ef5754\") {\n    id\n    itemCategory\n    itemName\n    type\n    unit\n    price\n    taxType\n  }\n}\n",
+								"variables": ""
+							}
+						},
+						"url": "localhost:4000/api/graphql"
+					},
+					"response": []
+				},
+				{
+					"name": "List Organization Non FixedCharge Setting",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query {\n    organizationNonFixedChargeSettings{\n        id,\n        itemCategory,\n        itemName,\n        type,\n        unit,\n        price,\n        taxType\n   }\n }",
+								"variables": ""
+							}
+						},
+						"url": "localhost:4000/api/graphql"
+					},
+					"response": []
+				},
+				{
+					"name": "Update Organization Non FixedCharge Setting By ID",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "mutation {\n  updateOrganizationNonFixedChargeSetting(id:\"dfc029e9-2355-4e38-83dc-0daa14094973\",input:{itemCategory:\"cc\",itemName:\"item02\",type:\"charge\",unit:\"item02\",price:200,taxType:\"yes1\"})   \n }",
+								"variables": ""
+							}
+						},
+						"url": "localhost:4000/api/graphql"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Organization Non FixedChage Setting By ID",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "mutation {\n  deleteOrganizationNonFixedChargeSetting(id:\"5f30d661-5e8b-4f93-bb9a-d373b1f3ceef\")\n }",
+								"variables": ""
+							}
+						},
+						"url": "localhost:4000/api/graphql"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Organization Receipt",
+			"item": [
+				{
+					"name": "Get Organization Receipt",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query {\n  organizationReceipt {\n    id\n    firstText\n    year\n    yearText\n    month\n    monthText\n    lastText\n    isResetInNextCycle\n  }\n}\n",
+								"variables": ""
+							}
+						},
+						"url": "localhost:4000/api/graphql"
+					},
+					"response": []
+				},
+				{
+					"name": "Update Organization Receipt By ID",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "\nmutation {\n  updateOrganizationReceipt(\n    input: {\n      firstText: \"a\"\n  year: \"B\"\n  yearText: \"b\"\n  month: \"c\"\n  monthText: \"d\"\n  lastText: \"e\"\n  isResetInNextCycle: \"aaaa\"\n    }\n  )\n}",
+								"variables": ""
+							}
+						},
+						"url": "localhost:4000/api/graphql"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Organization Receipt Template Setting",
+			"item": [
+				{
+					"name": "List Organization Receipt Template Settings",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query {\n  organizationReceiptTemplateSettings {\n    id\n    name\n    taxTypes\n    titleName\n    patientInfo\n    priceShowType\n    organizationInfoOne\n    organizationInfoTwo\n    noteText\n    sealOneName\n    sealOnePicture\n    sealTwoName\n    sealTwoPicture\n    sealThreeName\n    sealThreePicture\n    sealFourName\n    sealFourPicture\n    partOneName\n    partTwoName\n    showUnpaidInformation\n  }\n}\n",
+								"variables": ""
+							}
+						},
+						"url": "localhost:4000/api/graphql"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Organization Receipt Template Setting",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query {\n  organizationReceiptTemplateSetting(id:\"f620711c-efa0-45ac-9274-6db62d3c7381\") {\n    id\n    name\n    taxTypes\n    titleName\n    patientInfo\n    priceShowType\n    organizationInfoOne\n    organizationInfoTwo\n    noteText\n    sealOneName\n    sealOnePicture\n    sealTwoName\n    sealTwoPicture\n    sealThreeName\n    sealThreePicture\n    sealFourName\n    sealFourPicture\n    partOneName\n    partTwoName\n  }\n}\n",
+								"variables": ""
+							}
+						},
+						"url": "localhost:4000/api/graphql"
+					},
+					"response": []
+				},
+				{
+					"name": "Create Organization Receipt Template Setting",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "\nmutation {\n  createOrganizationReceiptTemplateSetting(\n    input: {\n      name:\"shasha\",\n      titleName:\"收據\",\n      taxTypes:[\"businessTax\"],\n      patientInfo:[\"classification\",\"roomOrBedNo.\"],\n      priceShowType:\"sumUp\",\n      organizationInfoOne:[\"taxIdNo.\"],\n      organizationInfoTwo:[\"email\"],\n      noteText:\"\",\n      sealOneName:\"機構\",\n      sealTwoName:\"負責人\",\n      sealThreeName:\"經辦人\",\n      sealFourName:\"\",\n      partOneName:\"第一聯 住民收執聯\",\n      partTwoName:\"第二聯 機構留存聯\"\n    }\n  )\n}",
+								"variables": ""
+							}
+						},
+						"url": "localhost:4000/api/graphql"
+					},
+					"response": []
+				},
+				{
+					"name": "update Organization Receipt Template Setting",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "\nmutation {\n  updateOrganizationReceiptTemplateSetting(\n    id:\"d6ebfef1-17f4-4843-a291-6008fd2acf38\",\n    input: {\n      name:\"shasha\",\n      titleName:\"收據\",\n      patientInfo:[\"classification\",\"roomOrBedNo.\"],\n      priceShowType:\"sumUp\",\n      organizationInfoOne:[\"taxIdNo.\"],\n      organizationInfoTwo:[\"email\"],\n      noteText:\"\",\n      sealOneName:\"機構\",\n      sealTwoName:\"負責人\",\n      sealThreeName:\"經辦人\",\n      sealFourName:\"\",\n      partOneName:\"第一聯 住民收執聯\",\n      partTwoName:\"第二聯 機構留存聯\"\n    }\n  )\n}",
+								"variables": ""
+							}
+						},
+						"url": "localhost:4000/api/graphql"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Organization Receipt Template Setting",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "\nmutation {\n  deleteOrganizationReceiptTemplateSetting(id:\"582548f1-4c25-4cbf-adde-c6b6eaee8b5f\")\n}",
+								"variables": ""
+							}
+						},
+						"url": "localhost:4000/api/graphql"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Patient Bill Print",
+			"item": [
+				{
+					"name": "Print Patient Bill GeneralTable",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "\nquery {\n  printPatientBillGeneralTable(billDate: \"2022-12-31T16:00:00.000Z\") \n}\n",
+								"variables": ""
+							}
+						},
+						"url": "localhost:4000/api/graphql"
+					},
+					"response": []
+				},
+				{
+					"name": "Print Patient Bill",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query {\n  printPatientBill(id:\"04bff3c1-b4a9-4258-93b3-28defb6fb6f8\")  \n}",
+								"variables": ""
+							}
+						},
+						"url": "localhost:4000/api/graphql"
+					},
+					"response": []
+				},
+				{
+					"name": "Print Patient Bills",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{token}}"
+							},
+							{
+								"key": "jubo-Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI3OGQ2ZDg5NC0zY2U0LTQwOTctYmJmOS00MzFlYzc5YWUwNzciLCJ1c2VybmFtZSI6IiIsImRpc3BsYXlOYW1lIjoi6ZW35bCP6IqzIiwiZXhwIjoxNjg5MDM5NTMyLCJpYXQiOjE2ODc3NDM1MzIsImlzcyI6Ikp1Ym8gSW5jLiJ9.Ops6I_M5uCYgHDYtSr5rmAnScu80gDI1lBQQ0Sorzkg",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query {\n  printPatientBills(billDate: \"2023-05-01T16:00:00.000Z\")  \n}",
+								"variables": ""
+							}
+						},
+						"url": "localhost:4000/api/graphql"
+					},
+					"response": []
+				},
+				{
+					"name": "Print Patient Bills Use Json",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query {\n  printPatientBills(billDate: \"2023-04-30T16:00:00.000Z\")  \n}",
+								"variables": ""
+							}
+						},
+						"url": "localhost:4000/api/graphql"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Patient Bill",
+			"item": [
+				{
+					"name": "Get Patient Bill",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "\nquery {\n  patientBill(patientId:\"d3656d15-1964-40cd-b30a-c664fee9838e\",billYear:2023,billMonth:4) {\n    id\n    createdAt\n    amountDue\n    amountReceived\n    amountReceived\n    basicCharges {\n      id\n      itemName\n      type\n      unit\n      price\n      taxType\n      startDate\n      endDate\n      note\n      receiptStatus\n      receiptDate\n    }\n    subsidies{\n        itemName\n        type\n        unit\n        price\n        idNumber\n        note\n        startDate\n        endDate\n        receiptStatus\n        receiptDate\n    }    \n    nonFixedChargeRecords{\n        itemCategory\n        itemName\n        unit\n        price\n        quantity\n        subtotal\n        receiptStatus\n        receiptDate\n    }\n    transferRefundHospitalizeds {\n      id\n      startDate\n      endDate\n      reason\n      department\n      room\n      bed\n      isReserveBed\n      note\n      items\n      receiptStatus\n      receiptDate\n    }\n    transferRefundLeaves {\n      id\n      startDate\n      endDate\n      reason\n      isReserveBed\n      note\n      items\n      receiptStatus\n      receiptDate\n    }\n    transferRefundDischarges{\n        id\n        startDate\n        endDate\n        reason\n        note\n        items\n        receiptStatus\n        receiptDate\n    }\n    patientConsumptionRecords{\n        id\n        itemUnit\n    }\n    note\n    editNoteDate\n    editNoteUser{\n        firstName\n        lastName\n    }\n  }\n}",
+								"variables": ""
+							}
+						},
+						"url": "localhost:4000/api/graphql"
+					},
+					"response": []
+				},
+				{
+					"name": "List Patient Bills",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "\nquery {\n  patientBills(billDate: \"2023-04-30T16:00:00.000Z\") {\n    id\n    createdAt\n    amountDue\n    amountReceived\n    cumulativeUnpaidAmount\n    basicCharges {\n      id\n      itemName\n      type\n      unit\n      price\n      taxType\n      startDate\n      endDate\n      note\n      receiptStatus\n    }\n    subsidies{\n        itemName\n        type\n        unit\n        price\n        idNumber\n        note\n        startDate\n        endDate\n    }\n    note\n    editNoteDate\n    editNoteUser {\n      id\n      firstName\n    }\n    patient {\n      id\n      firstName\n    }\n    nonFixedChargeRecords {\n      itemCategory\n      itemName\n      unit\n      price\n      quantity\n      subtotal      \n    }\n    transferRefundHospitalizeds {\n      id\n      startDate\n      endDate\n      reason\n      department\n      room\n      bed\n      isReserveBed\n      note\n      items\n      receiptStatus\n    }\n    transferRefundLeaves {\n      id\n      startDate\n      endDate\n      reason\n      isReserveBed\n      note\n      items\n      receiptStatus\n    }\n    transferRefundDischarges {\n        id\n        startDate\n        endDate\n        reason\n        items\n        receiptStatus\n    }\n    patientConsumptionRecords{\n        id\n        itemUnit\n    }\n  }\n}\n",
+								"variables": ""
+							}
+						},
+						"url": "localhost:4000/api/graphql"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Patient Bills By PatientId and Date",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "\nquery {\n  patientBillByPatientIdAndDate(\n      patientId:\"029abe95-efc3-421b-b735-47ce57d4e8c8\"\n      createdAtDate:\"2022-03-31T14:46:54+08:00\") {\n    id\n    createdAt\n    amountReceived\n    fixedCharge\n    note\n    editNoteDate\n    patient{\n        id\n        firstName\n    }\n  }\n}",
+								"variables": ""
+							}
+						},
+						"url": "localhost:4000/api/graphql"
+					},
+					"response": []
+				},
+				{
+					"name": "Create Patient Bill",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "mutation {\n  createPatientBill(\n    input: {      \n      patientId: \"317edd46-1b4e-418c-8395-38f4eff59a8c\",\n      billDate:\"2022-07-06T14:46:54+08:00\"\n    }\n  ) \n}\n",
+								"variables": ""
+							}
+						},
+						"url": "localhost:4000/api/graphql"
+					},
+					"response": []
+				},
+				{
+					"name": "Create Patient Bills",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "mutation {\n  createPatientBills(\n    input: {      \n      patientId: [\"029abe95-efc3-421b-b735-47ce57d4e8c8\",\"e3f36fce-d404-42a5-87e4-5e8dfb730fe1\"],\n      billDate:\"2022-07-06T14:46:54+08:00\"\n    }\n  ) {\n      id\n  }\n}\n",
+								"variables": ""
+							}
+						},
+						"url": "localhost:4000/api/graphql"
+					},
+					"response": []
+				},
+				{
+					"name": "Update Patient Bill Note",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "mutation {\n  updatePatientBillNote(\n    input: {      \n      id: \"6a132f0d-d352-4eed-8dc4-6c0e52423249\",\n      note:\"bbab\"\n    }\n  ) \n}\n",
+								"variables": ""
+							}
+						},
+						"url": "localhost:4000/api/graphql"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Patient Bill (use fragment)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "{\n  basicCharge: patientBill(patientId:\"8bc199b1-0997-4e7a-99fa-ef600c41ba24\",billYear:2022,billMonth:6) {\n    ...comparisonFields\n  }\n  subsidy: patientBill(patientId:\"8bc199b1-0997-4e7a-99fa-ef600c41ba24\",billYear:2022,billMonth:6) {\n    ...comparisonFields\n  }\n}\n\nfragment comparisonFields on PatientBill {\n \t\tid\n    createdAt\n    amountReceived\n    basicCharge\n    subsidy\n    note\n    editNoteDate\n    editNoteUser{\n        id\n    }\n    nonFixedChargeRecords{\n        itemCategory\n        itemName\n        unit\n        price\n        quantity\n        subtotal\n    }\n}",
+								"variables": ""
+							}
+						},
+						"url": "localhost:4000/api/graphql"
+					},
+					"response": []
+				},
+				{
+					"name": "Update Patient Bill Charge Dates",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "mutation {\n  updatePatientBillChargeDates(\n    id:\"bcf0d471-457f-4c36-8283-bde5cbddb7f0\",\n    input: {      \n      nonFixedChargeStartDate:\"2022-08-01T00:46:54+08:00\"\n      nonFixedChargeEndDate:\"2022-08-30T23:46:54+08:00\"\n    }\n  ) \n}\n",
+								"variables": ""
+							}
+						},
+						"url": "localhost:4000/api/graphql"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Patient Bill Basic Charge",
+			"item": [
+				{
+					"name": "Add Patient Bill BasicCharge",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "mutation {\n  addPatientBillBasicCharge(\n    input: {\n      id:\"58d27c69-b81c-4bef-9fbb-4146a577fcb4\"\n      itemName: \"z6\"\n      type: \"charge\"\n      taxType:\"aaaaa\"\n      unit: \"月\"\n      price: 1500\n      startDate: \"2022-06-01T14:46:54+08:00\"\n      endDate: \"2022-06-30T14:46:54+08:00\"\n      note: \"String1\"\n    }\n  )\n}",
+								"variables": ""
+							}
+						},
+						"url": "localhost:4000/api/graphql"
+					},
+					"response": []
+				},
+				{
+					"name": "Update Patient Bill BasicCharge",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "mutation {\n  updatePatientBillBasicCharge(\n    input: {\n      basicChargeId: \"76adc8f9-bed9-4174-98f2-095c3d98f717\"\n      itemName: \"q1\"\n      type:\"charge\"\n      taxType: \"q2\"\n      unit: \"月\"\n      price: 1600\n      startDate: \"2022-05-01T14:46:54+08:00\"\n      endDate: \"2022-05-31T14:46:54+08:00\"\n      note: \"aaqqq\"\n    }\n  )\n}",
+								"variables": ""
+							}
+						},
+						"url": "localhost:4000/api/graphql"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Patient Bill BasicCharge",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "mutation {\n  deletePatientBillBasicCharge(\n    basicChargeId: \"6e4c2a47-2914-4e29-8c37-d7389a198625\"\n  ) \n}\n",
+								"variables": ""
+							}
+						},
+						"url": "localhost:4000/api/graphql"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Patient Bill Basic Charge",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query {\n  patientBillBasicCharge(\n    basicChargeId: \"06381808-e5a3-4e0a-a5d5-df6577138eb5\"\n  ) {\n    id\n    itemName\n    type\n    unit\n    price\n    taxType\n    startDate\n    endDate\n    note\n    receiptStatus\n    user{\n        id\n        displayName\n    }\n  }\n}\n",
+								"variables": ""
+							}
+						},
+						"url": "localhost:4000/api/graphql"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Patient Bill subsidy",
+			"item": [
+				{
+					"name": "Add Patient Bill Subsidy",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "\nmutation {\n  addPatientBillSubsidy(\n    input: {\n      id: \"2fbe8b84-c840-4ac8-a04f-99b32e860211\"\n      itemName: \"t1\"\n      type:\"charge\"\n      price: 200\n      unit: \"t2\"\n      idNumber: \"t3\"\n      startDate: \"2022-07-01T14:46:54+08:00\"\n      endDate: \"2022-07-31T14:46:54+08:00\"\n      note: \"t4\"\n    }\n  )\n}\n",
+								"variables": ""
+							}
+						},
+						"url": "localhost:4000/api/graphql"
+					},
+					"response": []
+				},
+				{
+					"name": "Update Patient Bill Subsidy",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "\nmutation {\n  updatePatientBillSubsidy(\n    input: {\n      subsidyId:\"8a7702bd-ad49-47ab-b288-dd7c5a26a080\"\n      itemName: \"t2\"\n      type:\"charge\"\n      price: 300\n      unit: \"t22\"\n      idNumber: \"t222\"\n      startDate: \"2022-04-01T14:46:54+08:00\"\n      endDate: \"2022-04-02T14:46:54+08:00\"\n      note: \"t2222\"\n    }\n  )\n}\n",
+								"variables": ""
+							}
+						},
+						"url": "localhost:4000/api/graphql"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Patient Bill Subsidy",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "\nmutation {\n  deletePatientBillSubsidy(subsidyId:\"8a7702bd-ad49-47ab-b288-dd7c5a26a080\")\n}\n",
+								"variables": ""
+							}
+						},
+						"url": "localhost:4000/api/graphql"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Patient Bill Subsidy",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query {\n  patientBillSubsidy(\n    subsidyId: \"8a7702bd-ad49-47ab-b288-dd7c5a26a080\"\n  ) {\n    id\n    itemName\n    price\n    unit\n    idNumber\n    note\n    startDate\n    endDate\n    user{\n        firstName\n        lastName\n    }\n  }\n}\n",
+								"variables": ""
+							}
+						},
+						"url": "localhost:4000/api/graphql"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Pay Record Detail",
+			"item": [
+				{
+					"name": "Create Pay Record Detail(Only Price)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "\nmutation {\n  createPayRecordDetail(\n    payRecordId: \"edfc148d-4125-415e-9c33-2089e5e56da2\"\n    input: {\n      recordDate: \"2023-04-02T10:47:54+08:00\"\n      type: charge\n      price:40000\n      method: \"cash\"\n      payer: \"test2\"\n      handler: \"test3\"\n      note: \"test4\"\n    }\n  )\n}\n",
+								"variables": ""
+							}
+						},
+						"url": "localhost:4000/api/graphql"
+					},
+					"response": []
+				},
+				{
+					"name": "Create Pay Record Detail(Only Petty Cash Price)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "\nmutation {\n  createPayRecordDetail(\n    payRecordId: \"edfc148d-4125-415e-9c33-2089e5e56da2\"\n    input: {\n      recordDate: \"2023-04-02T10:47:54+08:00\"\n      type: pettyCharge\n      pettyCashPrice:20\n      method: \"cash\"\n      payer: \"test2\"\n      handler: \"test3\"\n      note: \"test4\"\n    }\n  )\n}\n",
+								"variables": ""
+							}
+						},
+						"url": "localhost:4000/api/graphql"
+					},
+					"response": []
+				},
+				{
+					"name": "Create Pay Record Detail(Price And Petty Cash Price)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "\nmutation {\n  createPayRecordDetail(\n    payRecordId: \"edfc148d-4125-415e-9c33-2089e5e56da2\"\n    input: {\n      recordDate: \"2023-04-02T10:47:54+08:00\"\n      type: chargeAndPettyCharge\n      price:100\n      pettyCashPrice:5000\n      method: \"cash\"\n      payer: \"test2\"\n      handler: \"test3\"\n      note: \"test4\"\n    }\n  )\n}\n",
+								"variables": ""
+							}
+						},
+						"url": "localhost:4000/api/graphql"
+					},
+					"response": []
+				},
+				{
+					"name": "Create Pay Record Detail(Refund)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "\nmutation {\n  createPayRecordDetail(\n    payRecordId: \"edfc148d-4125-415e-9c33-2089e5e56da2\"\n    input: {\n      recordDate: \"2023-04-02T10:47:54+08:00\"\n      type: refund\n      price:100\n      method: \"cash\"\n      payer: \"test2\"\n      handler: \"test3\"\n      note: \"test4\"\n    }\n  )\n}\n",
+								"variables": ""
+							}
+						},
+						"url": "localhost:4000/api/graphql"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Pay Record Detail",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query {\n  payRecordDetail(id:\"eb6f46f6-d439-4fc2-9d69-61e48a988f29\") {\n    id\n    recordDate\n    type\n    price\n    method\n    payer\n    handler\n    note\n    user{\n        firstName\n    }\n  }\n}",
+								"variables": ""
+							}
+						},
+						"url": "localhost:4000/api/graphql"
+					},
+					"response": []
+				},
+				{
+					"name": "Update Pay Record Detail",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "\nmutation {\n  updatePayRecordDetail(\n    id:\"975ff754-2a0e-40c3-a1a4-39f654259a78\"\n    input: {\n      recordDate: \"2022-08-01T10:47:54+08:00\"\n      type: charge\n      price: 800\n      method: \"cash\"\n      payer: \"a1\"\n      handler: \"a2\"\n      note: \"a3\"\n    }\n  )\n}\n",
+								"variables": ""
+							}
+						},
+						"url": "localhost:4000/api/graphql"
+					},
+					"response": []
+				},
+				{
+					"name": "Update Pay Record Detail (Petty Cash Price)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "\nmutation {\n  updatePayRecordDetail(\n    id:\"e14d43e1-697d-4ee3-a95d-24d7efd3d34a\"\n    input: {\n      recordDate: \"2022-08-01T10:47:54+08:00\"\n      type: charge\n      pettyCashPrice: 80000\n      method: \"cash\"\n      payer: \"a1\"\n      handler: \"a2\"\n      note: \"a3\"\n    }\n  )\n}\n",
+								"variables": ""
+							}
+						},
+						"url": "localhost:4000/api/graphql"
+					},
+					"response": []
+				},
+				{
+					"name": "Invalid Pay Record Detail",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "\nmutation {\n  invalidPayRecordDetail(\n    id:\"975ff754-2a0e-40c3-a1a4-39f654259a78\"\n  )\n}\n",
+								"variables": ""
+							}
+						},
+						"url": "localhost:4000/api/graphql"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Pay Record Detail Print",
+			"item": [
+				{
+					"name": "Print Pay Record Detail",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query {\n  printPayRecordDetail(payRecordId:\"1c408742-6c00-478f-b6b4-b3174c1a6975\",id:\"5a86d3e2-a4e2-489b-bcc6-af4f9ce66a64\") \n}\n",
+								"variables": ""
+							}
+						},
+						"url": "localhost:4000/api/graphql"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Pay Record",
+			"item": [
+				{
+					"name": "Create Pay Record (Select Tax)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "mutation {\n  createPayRecords(\n    input: {      \n      patientsId: [\"4693162b-ae00-4a2d-9d1d-462e2139b89e\",\"b0b1b445-ccfe-4410-bb17-88fb0b11deec\"],\n      payDate:\"2022-07-02T14:46:54+08:00\"\n      openMethod:selectTax\n      taxTypes:[businessTax,stampTax,noTax,other]\n    }\n  ) \n}\n",
+								"variables": ""
+							}
+						},
+						"url": "localhost:4000/api/graphql"
+					},
+					"response": []
+				},
+				{
+					"name": "Create Pay Record (All Tax)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "mutation {\n  createPayRecords(\n    input: {      \n      patientsId: [\"d69b4a4c-bce3-43cc-b494-2dcb121c3985\"],\n      payDate:\"2023-03-01T14:46:54+08:00\"\n      startDate:\"2023-01-01T00:46:54+08:00\"\n      endDate:\"2023-03-31T23:46:54+08:00\"\n      openMethod:allTax\n    }\n  ) \n}",
+								"variables": ""
+							}
+						},
+						"url": "localhost:4000/api/graphql"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Pay Records",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query {\n  payRecords(payDate: \"2022-06-28T14:46:54+08:00\") {\n    id\n    patient{\n        id\n        firstName\n    }\n    receiptNumber\n    taxType\n    amountDue\n    paidAmount\n    note\n    isInvalid\n  }\n}\n",
+								"variables": ""
+							}
+						},
+						"url": "localhost:4000/api/graphql"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Pay Record",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query {\n  payRecord(id:\"2ca1ab6d-77bc-48c5-8337-e71ba8f51cc7\") {\n    id\n    patient{\n        id\n        firstName\n    }\n    receiptNumber\n    taxType\n    amountDue\n    paidAmount\n    note\n    isInvalid\n    payRecordDetails{\n        recordDate\n        type\n        price \n        method\n        payer\n        handler\n        note\n    }\n    user{\n        firstName\n    }\n    createdUser{\n        firstName\n    }\n    invalidUser{\n        firstName\n    }\n  }\n}",
+								"variables": ""
+							}
+						},
+						"url": "localhost:4000/api/graphql"
+					},
+					"response": []
+				},
+				{
+					"name": "Update Pay Record Note",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "mutation {\n  updatePayRecordNote(\n    id:\"2ca1ab6d-77bc-48c5-8337-e71ba8f51cc7\",\n    note:\"123\"\n  ) \n}\n",
+								"variables": ""
+							}
+						},
+						"url": "localhost:4000/api/graphql"
+					},
+					"response": []
+				},
+				{
+					"name": "Invalid Pay Record",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "mutation {\n  invalidPayRecord(\n    id:\"ed5ee7b4-d64b-4d1f-a528-b3bb96f9b782\"\n    input: {      \n        invalidDate:\"2022-08-06T14:46:54+08:00\"\n        invalidCaption:\"haha\"\n    }\n  ) \n}\n",
+								"variables": ""
+							}
+						},
+						"url": "localhost:4000/api/graphql"
+					},
+					"response": []
+				},
+				{
+					"name": "Cancel Invalid Pay Record",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "mutation {\n  cancelInvalidPayRecord(\n    id:\"ed5ee7b4-d64b-4d1f-a528-b3bb96f9b782\"\n  ) \n}\n",
+								"variables": ""
+							}
+						},
+						"url": "localhost:4000/api/graphql"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Pay Records By PatientID",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query {\n  payRecordsByPatientId(patientId: \"d3656d15-1964-40cd-b30a-c664fee9838e\") {\n    id   \n    receiptNumber\n    taxType\n    amountDue\n    paidAmount\n    note\n    isInvalid\n  }\n}\n",
+								"variables": ""
+							}
+						},
+						"url": "localhost:4000/api/graphql"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "PayRecord Summary",
+			"item": [
+				{
+					"name": "PayRecord Summary List",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query {\n  payRecordSummaryList {\n    finishedPayRecordCount\n    issuedPayRecordCount\n    accumulationAmountDue\n    accumulationCumulativeUnpaidAmount\n    accumulationPaidAmount\n    patient{\n        id\n        firstName\n    }\n  }\n}\n",
+								"variables": ""
+							}
+						},
+						"url": "localhost:4000/api/graphql"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Pay Record Print",
+			"item": [
+				{
+					"name": "Print Pay Record (Detail)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query {\n  printPayRecord(id:\"ed5ee7b4-d64b-4d1f-a528-b3bb96f9b782\") \n}\n",
+								"variables": ""
+							}
+						},
+						"url": "localhost:4000/api/graphql"
+					},
+					"response": []
+				},
+				{
+					"name": "Print Pay Record Use Json",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query {\n  printPayRecordPartJson(id:\"f8cecfcf-30dd-49f1-a5f9-4fa6c739f4cd\") \n}\n",
+								"variables": ""
+							}
+						},
+						"url": "localhost:4000/api/graphql"
+					},
+					"response": []
+				},
+				{
+					"name": "Print Pay Record (Part)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query {\n  printPayRecordPart(id:\"4ba8f553-7ec9-4c18-965c-828e0c134d7c\") \n}\n",
+								"variables": ""
+							}
+						},
+						"url": "localhost:4000/api/graphql"
+					},
+					"response": []
+				},
+				{
+					"name": "Print Pay Record GeneralTable",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "\nquery {\n  printPayRecordGeneralTable(payDate: \"2023-04-29T16:00:00.000Z\") \n}\n",
+								"variables": ""
+							}
+						},
+						"url": "localhost:4000/api/graphql"
+					},
+					"response": []
+				},
+				{
+					"name": "Print Pay Records",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query {\n  printPayRecordsPart(payDate:\"2022-11-30T16:00:00.000Z\") \n}\n",
+								"variables": ""
+							}
+						},
+						"url": "localhost:4000/api/graphql"
+					},
+					"response": []
+				},
+				{
+					"name": "Print PayRecords Part In PayRecords ID",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query{printPayRecordsPartInPayRecordsId(ids: [\"84f5b693-d482-4468-b796-0344d32ab299\",,\"4ef619c2-fb1e-4383-8cb8-6c7cd70fa7dd\",,\"6366f676-af96-48f8-9f7f-dd6b8b092fce\",,\"24e5a5de-82c2-43cd-bc50-b7f90fa550f9\"])}",
+								"variables": ""
+							}
+						},
+						"url": "localhost:4000/api/graphql"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Pay Record Print By Tax Type",
+			"item": [
+				{
+					"name": "Print Pay Record Part By TaxType",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query {\n  printPayRecordPartByTaxType(id:\"235471d0-2fa3-460a-a09e-2ebc03769d60\") \n}\n",
+								"variables": ""
+							}
+						},
+						"url": "localhost:4000/api/graphql"
+					},
+					"response": []
+				},
+				{
+					"name": "Print Pay Records Part By TaxType",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query {\n  printPayRecordsPartByTaxTypeInPayRecordsId(ids:[\"56daf1e5-1d50-421b-9d53-b6b94472c6c5\",\"9cfbe4c1-cff0-4d4e-b7d9-67f2d2d45ca7\"]) \n}\n",
+								"variables": ""
+							}
+						},
+						"url": "localhost:4000/api/graphql"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Patient",
+			"item": [
+				{
+					"name": "Get Patient By ID",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query {\n  patient(id: \"004b6f6e-a2b5-4603-a593-037dc9d79123\") {\n    firstName\n    lastName\n    idNumber\n    providerId\n    status\n    users {\n      id\n      firstName\n      lastName\n      displayName\n      idNumber\n      providerId      \n    }\n    updateBillChargeSettingUser{\n          id\n      }\n  }\n}\n",
+								"variables": ""
+							}
+						},
+						"url": "localhost:4000/api/graphql"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Patients",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query {\n  patients{\n    id,\n    firstName\n    lastName\n    branch\n    idNumber\n    photoUrl\n    photoXPosition\n    photoYPosition\n    providerId\n    bed\n    room\n    status\n    users {\n      id\n      firstName\n      lastName\n      displayName\n      idNumber      \n      providerId\n    }\n  }\n}\n",
+								"variables": ""
+							}
+						},
+						"url": "localhost:4000/api/graphql"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Patients Sort",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query {\n  patientsSort(sortby:\"depositRecord\"){\n    id,\n    firstName\n    lastName\n    updatedAt\n    branch\n    idNumber\n    photoUrl\n    photoXPosition\n    photoYPosition\n    providerId\n    bed\n    room\n    status\n    detail1{\n      date\n      text1\n    }\n    users {\n      id\n      firstName\n      lastName\n      displayName\n      idNumber      \n      providerId\n    }\n  }\n}\n",
+								"variables": ""
+							}
+						},
+						"url": "localhost:4000/api/graphql"
+					},
+					"response": []
+				},
+				{
+					"name": "Update Patients Bill Charge Setting",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "mutation {\n  updatePatientsBillChargeSetting(\n    patients:[\"03bb1070-0286-4dca-bb69-6c003681f3b0\"]\n    billChargeSettingId:\"f19b4420-0855-448b-81d6-3d48f8b71da9\"\n  )\n}",
+								"variables": ""
+							}
+						},
+						"url": "localhost:4000/api/graphql"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Subsidy Setting",
+			"item": [
+				{
+					"name": "List Subsidies Setting",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query {\n  subsidySettings(patientId: \"bbb55201-b84b-4c7b-8043-10b6a3f29e09\") {\n    id\n    itemName\n    type\n    price\n    unit\n    idNumber\n    note\n    user{\n        id\n        username\n    }\n  }\n}\n\n\n\n",
+								"variables": ""
+							}
+						},
+						"url": "localhost:4000/api/graphql"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Subsidy Setting",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query {\n  subsidySetting(id: \"e6076b79-3617-4d6b-a821-85cbfab8d775\") {\n    id\n    itemName\n    type\n    price\n    unit\n    idNumber\n    note\n  }\n}\n",
+								"variables": ""
+							}
+						},
+						"url": "localhost:4000/api/graphql"
+					},
+					"response": []
+				},
+				{
+					"name": "Update Subsidies Setting",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "mutation {\n  updateSubsidiesSetting2(\n    patientId: \"bbb55201-b84b-4c7b-8043-10b6a3f29e09\"\n    input: [{\n      itemName: \"a\"\n      type:\"charge\"\n      price: 500\n      unit: \"aa\"\n      note: \"bbbs\"\n    },{\n      id:\"ddaf1f95-bada-4423-891d-ca63c354219f\"\n      itemName: \"a1\"\n      type:\"charge\"\n      price: 1\n      unit: \"a2\"\n      idNumber: \"a3\"\n      note: \"a4\"\n    }],\n  )\n}\n",
+								"variables": ""
+							}
+						},
+						"url": "localhost:4000/api/graphql"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Transfer Refund",
+			"item": [
+				{
+					"name": "List Patient Latest Transfer Refund",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "\nquery {\n  patientLatestTransferRefund {    \n    startDate\n    endDate\n    type\n    updatedAt\n    subtotal\n    patient{\n        id\n    }\n  }\n}",
+								"variables": ""
+							}
+						},
+						"url": "localhost:4000/api/graphql"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Transfer Refund Leave",
+			"item": [
+				{
+					"name": "Create Transfer Refund Leave",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "mutation {\n  createTransferRefundLeave(\n    patientId: \"b28a25ce-f664-4ab3-85c7-6c57c643eb9c\"\n    input: {\n      startDate: \"2022-05-10T10:31:15.000Z\"\n      endDate: \"2022-04-11T10:31:15.000Z\"\n      reason: \"test1\"\n      isReserveBed: \"true\"\n      note:\"test2\"\n      items:[{itemName:\"膳食費\",type:\"refund\",price:2000}]\n    }\n  )\n}",
+								"variables": ""
+							}
+						},
+						"url": "localhost:4000/api/graphql"
+					},
+					"response": []
+				},
+				{
+					"name": "Update Transfer Refund Leave",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "mutation {\n  updateTransferRefundLeave(\n    input: {\n      startDate: \"2022-05-09T10:31:15.000Z\"\n      endDate: \"2022-04-10T10:31:15.000Z\"\n      reason: \"t1\"\n      isReserveBed: \"false\"\n      note:\"t2\"\n      items:[{itemName:\"膳食費1\",type:\"refund2\",price:500}]\n    }\n    id: \"fb86ee0f-548c-47a0-84f8-ae85a8618edc\"\n  )\n}",
+								"variables": ""
+							}
+						},
+						"url": "localhost:4000/api/graphql"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Transfer Refund Leave",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "mutation {\n  deleteTransferRefundLeave(id: \"c20a4c27-b945-449a-9794-5b51bb4c7ff2\")\n}",
+								"variables": ""
+							}
+						},
+						"url": "localhost:4000/api/graphql"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Transfer Refund Leave",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "\nquery {\n  transferRefundLeave(id: \"fb86ee0f-548c-47a0-84f8-ae85a8618edc\") {\n    id\n    startDate\n    endDate\n    reason\n    isReserveBed\n    note\n    items\n    receiptStatus\n  }\n}",
+								"variables": ""
+							}
+						},
+						"url": "localhost:4000/api/graphql"
+					},
+					"response": []
+				},
+				{
+					"name": "List Transfer Refund Leaves",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "\nquery {\n  transferRefundLeaves(patientId: \"b28a25ce-f664-4ab3-85c7-6c57c643eb9c\",date:\"2022-05-10T10:31:15.000Z\") {\n    id\n    startDate\n    endDate\n    reason\n    isReserveBed\n    note\n    items\n  }\n}",
+								"variables": ""
+							}
+						},
+						"url": "localhost:4000/graphql"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "Get User By ID",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query {\n  user(id: \"c8b5970d-2339-45db-b442-48db0e9fba2c\") {\n    firstName,\n    lastName,\n    displayName,\n    idNumber,\n    providerToken,\n    providerId,\n  }\n}\n\n",
+								"variables": ""
+							}
+						},
+						"url": "localhost:4000/api/graphql"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Users",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query {\n  users {\n    id,\n    firstName,\n    lastName,\n    displayName,\n    idNumber,\n    providerToken,\n    providerId,\n  }\n}\n\n",
+								"variables": ""
+							}
+						},
+						"url": "localhost:4000/api/graphql"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Ｍe",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query {\n  me {\n    firstName,\n    lastName,\n    displayName,\n  }\n}\n\n",
+								"variables": ""
+							}
+						},
+						"url": "localhost:4000/api/graphql"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "GraphQL method",
+			"item": [
+				{
+					"name": "Get Pay Records By Fields",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "# 下面的 id receiptNumber可自由增加 如:taxType\nquery {\n  payRecord(id:\"4ff8a069-6e7d-46bc-b9f7-edc6a0e5bf17\") {\n    id\n    receiptNumber\n  }\n}\n",
+								"variables": ""
+							}
+						},
+						"url": "localhost:4000/api/graphql"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Pay Records By Aliases",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "# 如果要呼叫兩個一樣的payRecord 就可以用這個命名區別\nquery {\n  data1 : payRecord(id:\"6e76cf32-efaa-45df-985d-df9fb5c9f30a\") {\n    id\n    receiptNumber\n    taxType\n  }\n   data2 : payRecord(id:\"d1e515b9-70b3-4308-a030-95f1219b3a0e\") {\n    id\n    receiptNumber\n    taxType\n  }\n}\n",
+								"variables": ""
+							}
+						},
+						"url": "localhost:4000/api/graphql"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Pay Records By Fragments",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "# 其實跟Aliases在做的事情很像 不過差別是這邊不會有duplicate code的問題\n# 而是統一定義回來的field\n{\n  leftComparison: payRecord(id:\"6e76cf32-efaa-45df-985d-df9fb5c9f30a\") {\n    ...comparisonFields\n  }\n  rightComparison: payRecord(id:\"d1e515b9-70b3-4308-a030-95f1219b3a0e\") {\n    ...comparisonFields\n  }\n}\n\nfragment comparisonFields on PayRecord {\n  id\n  taxType\n  receiptNumber\n}",
+								"variables": ""
+							}
+						},
+						"url": "localhost:4000/api/graphql"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Pay Record By Operation name",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "# 增加可讀性\n# 若一次執行多筆 query(mutation) 有助於區分各個 query(mutation) 在做什麼事情\nquery payRecordAndPatient{\n  payRecord(id:\"6e76cf32-efaa-45df-985d-df9fb5c9f30a\") {\n    id\n    patient{\n        firstName\n        lastName\n    }\n    receiptNumber\n  }\n}",
+								"variables": ""
+							}
+						},
+						"url": "localhost:4000/api/graphql"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Patient By ID Use Variables",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "## 透過右邊的那個 Variables把值傳進來\nquery ($id:ID!){\n  patient(id: $id) {\n    firstName\n    lastName\n    idNumber\n    status\n  }\n}\n\n\n",
+								"variables": "{\n  \"id\": \"019533c3-c667-4702-a920-14b3d10d2153\"\n}"
+							}
+						},
+						"url": "localhost:4000/api/graphql"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Patient By ID Use Variables (default)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "## 也是透過右邊的那個 Variables把值傳進來 只是在沒傳入的時候可以給default值\nquery ($id:ID!=\"019533c3-c667-4702-a920-14b3d10d2153\"){\n  patient(id: $id) {\n    firstName\n    lastName\n    idNumber\n    status\n  }\n}",
+								"variables": ""
+							}
+						},
+						"url": "localhost:4000/api/graphql"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Pay Record By Directives",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "# 可以透過傳入參數來決定要不要顯示裡面的一些東西\nquery ($havePatient: Boolean!) {\n  payRecord(id: \"3afcba2a-9307-4614-ae72-8c34e62d34d3\") {\n    id\n    patient @include(if: $havePatient) {\n      firstName\n      lastName\n    }\n    receiptNumber\n  }\n}\n",
+								"variables": "{\"havePatient\":false}"
+							}
+						},
+						"url": "localhost:4000/api/graphql"
+					},
+					"response": []
+				},
+				{
+					"name": "Test Subscription",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "subscription {\n  organizationReceipt {\n      yearText\n  }\n}\n",
+								"variables": ""
+							}
+						},
+						"url": "localhost:4000/api/graphql"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Pay Records By Fields Copy",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{token}}"
+							}
+						],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "# 下面的 id receiptNumber可自由增加 如:taxType\nquery {\n  payRecord(id:\"4ff8a069-6e7d-46bc-b9f7-edc6a0e5bf17\") {\n    __typename\n    ... on PayRecord {\n        id\n        note\n    }\n    ... on PatientBill {\n        id\n        note\n    }\n  }\n}\n",
+								"variables": ""
+							}
+						},
+						"url": "localhost:4000/api/graphql"
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
